@@ -2,7 +2,7 @@ import { SAMPLE_DATA } from "@/constants/home";
 import { Sora_400Regular, Sora_600SemiBold, Sora_700Bold } from "@expo-google-fonts/sora";
 import { Ionicons } from "@expo/vector-icons";
 import { useFonts } from "expo-font";
-import { useLocalSearchParams } from "expo-router";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import { useState } from "react";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
@@ -37,7 +37,7 @@ return(
 export default function CoffeeDetails(){
 
    
-
+    const routes=useRouter()
 
 
     const { id } = useLocalSearchParams<{id:string}>(); //capture id from URL
@@ -123,7 +123,7 @@ export default function CoffeeDetails(){
                <Text style={{fontFamily:"Sora_600SemiBold", fontSize: 20,  }} className="text-[#C67C4E]">${coffee.price}</Text>
             </View>
 
-               <TouchableOpacity>
+               <TouchableOpacity onPress={()=>{routes.push('/order')}}>
                 <Text  className="bg-[#C67C4E] text-white  border-[#A2A2A2] rounded-2xl -mt-6 ml-14 pt-4 pl-20" style={{fontFamily:"Sora_700Bold",fontSize:18,width:217,height:56}}>Buy Now</Text>
                </TouchableOpacity>
 
