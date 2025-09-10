@@ -1,5 +1,5 @@
 import { Ionicons } from "@expo/vector-icons";
-import { Image, SafeAreaView, Text, View } from "react-native";
+import { Image, SafeAreaView, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
 export default function Index() {
@@ -50,11 +50,41 @@ export default function Index() {
 
         <View style={{width:350,height:1,borderColor:"black",marginTop:15,marginLeft:5,backgroundColor:"black"}}></View>
         {/**Discount */}
-        <View style={{width:350,height:44}} className="border border-[#A2A2A2] rounded-xl flex-row gap-5 mt-4 pt-2">
+        <View style={{width:350,height:44}} className="border border-[#A2A2A2] rounded-xl flex-row gap-5 mt-8 pt-2">
             <Ionicons name="pricetag" size={20} style={{marginLeft:10}} color="#C67C4E"/>
             <Text style={{fontFamily:"Sora_600SemiBold",fontSize:18,color:"#A2A2A2"}} >1 Discount is Applied</Text>
             <Ionicons name="arrow-forward" size={20} style={{marginLeft:80}}/>
         </View>
+
+        {/**Payment Summary */}
+        <View className="mt-8 ">
+            <Text className="" style={{fontFamily:"Sora_600SemiBold",fontSize:20}}>Payment Summary</Text>
+            <View className="flex-column gap-5">
+                <View className="flex-row gap-48 pt-3 ">
+                    <Text style={{fontFamily:"Sora_400Regular",fontSize:16}}>Price</Text>
+                    <Text style={{fontFamily:"Sora_600SemiBold",fontSize:16,marginLeft:100}}>$3.45</Text>
+                </View>
+                <View className="flex-row gap-32">
+                    <Text style={{fontFamily:"Sora_400Regular",fontSize:16}}>Delivery Fee</Text>
+                    <Text style={{fontFamily:"Sora_600SemiBold",fontSize:16,marginLeft:100}}> $2.0 $1.0</Text>
+                </View>
+            </View>
+        </View>
+        {/** Wallet Section */}
+        <View className="mt-16 flex-row gap-20" style={{width:350,height:64}}>
+           
+            <Ionicons name="wallet" size={20} color="#C67C4E" style={{paddingTop:15}}/>
+            <View className="flex-column gap-1 ">
+            <Text style={{fontFamily:"Sora_600SemiBold",fontSize:18}}>Cash/wallet</Text>
+            <Text style={{fontFamily:"Sora_600SemiBold",fontSize:18,color:"#C67C4E"}}>$ 5.54</Text>
+            </View>
+            <Ionicons name="arrow-down" size={20} color="black" style={{marginLeft:80}}/>
+
+        </View>
+        {/** Order button */}
+        <TouchableOpacity className="bg-[#C67C4E]  flex-row mt-10 border justify-between border-[#C67C4E] rounded-3xl" style={{width:350,height:54}}>
+              <Text style={{fontFamily:"Sora_600SemiBold",fontSize:20,color:"white"}} className="self-center ml-44">Order</Text>
+        </TouchableOpacity>
 
 
         </SafeAreaView>   
