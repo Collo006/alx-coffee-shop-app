@@ -6,4 +6,5 @@ export interface CoffeeTypesProps{
     description: string,
     price: number,
     image: ImageSourcePropType,
+    details?:string
 }

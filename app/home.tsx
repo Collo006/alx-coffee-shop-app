@@ -1,11 +1,11 @@
-import { Sora_400Regular, Sora_600SemiBold, Sora_700Bold, useFonts } from "@expo-google-fonts/sora";
-import React from "react";
-import { View ,Text, Dimensions, TextInput,Image, TouchableOpacity, ScrollView} from "react-native";
-import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
-import { Ionicons } from "@expo/vector-icons";
-import { CoffeeTypesProps } from "@/interfaces";
 import { SAMPLE_DATA } from "@/constants/home";
-import { useRouter } from "expo-router";
+import { CoffeeTypesProps } from "@/interfaces";
+import { Sora_400Regular, Sora_600SemiBold, Sora_700Bold, useFonts } from "@expo-google-fonts/sora";
+import { Ionicons } from "@expo/vector-icons";
+import { RelativePathString, useRouter } from "expo-router";
+import React from "react";
+import { Dimensions, Image, ScrollView, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 const Home :React.FC<CoffeeTypesProps> =()=>{
   
@@ -76,7 +76,7 @@ const Home :React.FC<CoffeeTypesProps> =()=>{
           <View key={item.id} className="mb-6 w-[48%]" >
                 {/*Image 1*/}
                 <View className=" h-64 w-auto">
-                  <TouchableOpacity onPress={() => router.push()}>
+                  <TouchableOpacity onPress={() => router.push(`/details/${item.id}` as RelativePathString)}>
                 <Image source={item.image} style={{width:160, height:148}} className=" rounded-xl self-center"/>
 
                 <Text style={{fontFamily:"Sora_600SemiBold", fontSize:16}} className=" leading-normal ml-3">{item.name}</Text>

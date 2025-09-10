@@ -2,84 +2,104 @@ import { CoffeeTypesProps } from "@/interfaces";
 
 const SAMPLE_DATA : CoffeeTypesProps[]=[
     {
-      id: "1",
-      name: "Caffe Mocha",
-      description: "Deep Foam",
-      price: 4.53,
-      image: require("@/assets/images/coffee2.png"),    
-    },
-    {
-      id: "2",
-      name: "Flat White",
-      description: "Espresso",
-      price: 3.53,
-      image: require("@/assets/images/coffee3.png"),    
-
-    },
-        {
-      id: "3",
+      id: "CaffeMocha",
       name: "Caffe Mocha",
       description: "Deep Foam",
       price: 4.53,
       image: require("@/assets/images/coffee2.png"),   
+      details: "A cappuccino is an approximately 150 ml (5 oz) beverage, with 25 ml of espresso coffee and 85ml of fresh milk" 
     },
-         
-    { id: "4",
+    {
+      id: "FlatWhite",
       name: "Flat White",
       description: "Espresso",
       price: 3.53,
-      image: require("@/assets/images/coffee3.png"),    
+      image: require("@/assets/images/coffee3.png"), 
+      details: "A cappuccino is an approximately 150 ml (5 oz) beverage, with 25 ml of espresso coffee and 85ml of fresh milk" 
+   
 
     },
         {
-      id: "5",
-      name: "Caffe Mocha",
-      description: "Deep Foam",
-      price: 4.53,
-      image: require("@/assets/images/coffee2.png"),    
-    },
-
-    { id: "6",
-      name: "Flat White",
-      description: "Espresso",
-      price: 3.53,
-      image: require("@/assets/images/coffee3.png"),
-
-    },
-
-     {
-      id: "7",
-      name: "Caffe Mocha",
-      description: "Deep Foam",
-      price: 4.53,
-      image: require("@/assets/images/coffee2.png"),
-    },
-
-    { id: "8",
-      name: "Flat White",
-      description: "Espresso",
-      price: 3.53,
-      image: require("@/assets/images/coffee3.png"),
-
-    },
-
-         {
-      id: "9",
+      id: "CaffeMocha1",
       name: "Caffe Mocha",
       description: "Deep Foam",
       price: 4.53,
       image: require("@/assets/images/coffee2.png"), 
+      details: "A cappuccino is an approximately 150 ml (5 oz) beverage, with 25 ml of espresso coffee and 85ml of fresh milk" 
+  
+    },
+         
+    { id: "FlatWhite2",
+      name: "Flat White",
+      description: "Espresso",
+      price: 3.53,
+      image: require("@/assets/images/coffee3.png"), 
+      details: "A cappuccino is an approximately 150 ml (5 oz) beverage, with 25 ml of espresso coffee and 85ml of fresh milk" 
+   
+
+    },
+        {
+      id: "CaffeMocha3",
+      name: "Caffe Mocha",
+      description: "Deep Foam",
+      price: 4.53,
+      image: require("@/assets/images/coffee2.png"), 
+      details: "A cappuccino is an approximately 150 ml (5 oz) beverage, with 25 ml of espresso coffee and 85ml of fresh milk" 
+   
     },
 
-
-        { id: "10",
+    { id: "FlatWhite4",
       name: "Flat White",
       description: "Espresso",
       price: 3.53,
       image: require("@/assets/images/coffee3.png"),
+      details: "A cappuccino is an approximately 150 ml (5 oz) beverage, with 25 ml of espresso coffee and 85ml of fresh milk" 
+
+
+    },
+
+     {
+      id: "CaffeMocha5",
+      name: "Caffe Mocha",
+      description: "Deep Foam",
+      price: 4.53,
+      image: require("@/assets/images/coffee2.png"),
+      details: "A cappuccino is an approximately 150 ml (5 oz) beverage, with 25 ml of espresso coffee and 85ml of fresh milk" 
+
+    },
+
+    { id: "FlatWhite6",
+      name: "Flat White",
+      description: "Espresso",
+      price: 3.53,
+      image: require("@/assets/images/coffee3.png"),
+      details: "A cappuccino is an approximately 150 ml (5 oz) beverage, with 25 ml of espresso coffee and 85ml of fresh milk" 
+
+
+    },
+
+         {
+      id: "CaffeMocha7",
+      name: "Caffe Mocha",
+      description: "Deep Foam",
+      price: 4.53,
+      image: require("@/assets/images/coffee2.png"), 
+      details: "A cappuccino is an approximately 150 ml (5 oz) beverage, with 25 ml of espresso coffee and 85ml of fresh milk" 
+
+    },
+
+
+        { id: "FlatWhite8",
+      name: "Flat White",
+      description: "Espresso",
+      price: 3.53,
+      image: require("@/assets/images/coffee3.png"),
+      details: "A cappuccino is an approximately 150 ml (5 oz) beverage, with 25 ml of espresso coffee and 85ml of fresh milk" 
+
 
     },
 
 ]
 
-export {SAMPLE_DATA}
+export { SAMPLE_DATA };
+
