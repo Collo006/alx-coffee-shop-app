@@ -3,15 +3,29 @@ import { CoffeeTypesProps } from "@/interfaces";
 import { Sora_400Regular, Sora_600SemiBold, Sora_700Bold, useFonts } from "@expo-google-fonts/sora";
 import { Ionicons } from "@expo/vector-icons";
 import { RelativePathString, useRouter } from "expo-router";
-import React from "react";
-import { Dimensions, Image, ScrollView, Text, TextInput, TouchableOpacity, View } from "react-native";
+import React, { useState } from "react";
+import { Dimensions, FlatList, Image, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 const Home :React.FC<CoffeeTypesProps> =()=>{
+
+  const[search,setSearch] = useState("")//search query
+  const[filterData,setFilteredData] = useState(SAMPLE_DATA)//results, stores the filtered list of coffees to show
+
+  //Function to Handle Search
+  const handleSearch = (text:string)=>{
+    setSearch(text) //updates the search state with current input
+    if(text === ""){
+      setFilteredData(SAMPLE_DATA);//reset if empty
+    }else{
+      const results =SAMPLE_DATA.filter((item)=> item.name.toLowerCase().includes(text.toLowerCase()));
+      setFilteredData(results)
+    }
+  }
   
-  const router=useRouter()
+  const router=useRouter() // routes
   
-  const[fontsLoaded]= useFonts({Sora_400Regular,Sora_700Bold, Sora_600SemiBold});
+  const[fontsLoaded]= useFonts({Sora_400Regular,Sora_700Bold, Sora_600SemiBold}); //fonts
 
 
     if(!fontsLoaded){
@@ -33,8 +47,8 @@ const Home :React.FC<CoffeeTypesProps> =()=>{
               {/*Search Bar*/ }
               <View className="flex-row bg-[#2A2A2A] border border-[#2A2A2A] rounded-2xl w-4/5 h-14 top-32 left-6 -ml-3">
                 <Ionicons name="search" size={20} color="white" className="mt-3 ml-1"/>
-               <TextInput placeholder="Search coffee"  placeholderTextColor="#A2A2A2" className="bg-[#2A2A2A] text-[#A2A2A2] rounded-xl w-52 h-12 pt-1 leading-normal pl-2 mt-1" style={{fontFamily:"Sora_400Regular",fontSize:14}} />
-              
+               <TextInput placeholder="Search coffee"  placeholderTextColor="#A2A2A2" value={search} onChangeText={handleSearch} className="bg-[#2A2A2A] text-[#A2A2A2] rounded-xl w-52 h-12 pt-1 leading-normal pl-2 mt-1" style={{fontFamily:"Sora_400Regular",fontSize:14}} />
+              {/** value- always reflects search state onChangeText- triggers filtering while typing */}
                <View className="bg-[#C67C4E] rounded-xl w-12 h-12 ml-40 mt-1">
                <Ionicons name="filter" size={20} color="white" className=" mt-3 text-center"/>
 
@@ -68,12 +82,12 @@ const Home :React.FC<CoffeeTypesProps> =()=>{
               
               {/*Image Section*/}
 
-              <ScrollView className=" flex-1 p-4">
-            <View className="flex-row flex-wrap justify-between mt-3 ">
+              <FlatList numColumns={2} key={2} columnWrapperStyle={{justifyContent:"space-between"}} data={filterData} keyExtractor={(item)=>item.id} renderItem={({item})=>(
+                <View className="flex-row flex-wrap justify-between mt-3 ">
 
-            {SAMPLE_DATA.map((item)=>(
+           
 
-          <View key={item.id} className="mb-6 w-[48%]" >
+          <View  className="mb-6 w-[48%]" >
                 {/*Image 1*/}
                 <View className=" h-64 w-auto">
                   <TouchableOpacity onPress={() => router.push(`/details/${item.id}` as RelativePathString)}>
@@ -91,9 +105,10 @@ const Home :React.FC<CoffeeTypesProps> =()=>{
 
 
                  
-              </View> ))}
+              </View> 
             </View>
-             </ScrollView>
+              )} 
+              />
 
             {/* Footer */}
             <View className="absolute bottom-0 left-0 right-0 flex-row justify-around bg-[#FFFFFF] border-gray-300 h-32 items-center">
