@@ -83,7 +83,7 @@ export default function CoffeeDetails(){
              <View className=" mt-4 flex-row" style={{width:360}}>
                 
                 <View className="" style={{width:150}}>
-                <Text style={{fontFamily:"Sora_600SemiBold",fontSize:20}}>{coffee.name}</Text>
+                <Text style={{fontFamily:"Sora_600SemiBold",fontSize:20}}>{coffee.productName}</Text>
                 <Text style={{fontFamily:"Sora_400Regular",fontSize:12}} className="text-[#A2A2A2] mb-4">Ice/Hot</Text>
                 <Text>Ratings</Text> 
                 </View>

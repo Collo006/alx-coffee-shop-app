@@ -1,4 +1,5 @@
 import { SAMPLE_DATA } from "@/constants/home";
+import { useCart } from "@/context/CartContext";
 import { CoffeeTypesProps } from "@/interfaces";
 import { Sora_400Regular, Sora_600SemiBold, Sora_700Bold, useFonts } from "@expo-google-fonts/sora";
 import { Ionicons } from "@expo/vector-icons";
@@ -9,6 +10,8 @@ import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 const Home :React.FC<CoffeeTypesProps> =()=>{
 
+  const {addToCart} = useCart()
+
   const[search,setSearch] = useState("")//search query
   const[filterData,setFilteredData] = useState(SAMPLE_DATA)//results, stores the filtered list of coffees to show
 
@@ -18,7 +21,7 @@ const Home :React.FC<CoffeeTypesProps> =()=>{
     if(text === ""){
       setFilteredData(SAMPLE_DATA);//reset if empty
     }else{
-      const results =SAMPLE_DATA.filter((item)=> item.name.toLowerCase().includes(text.toLowerCase()));
+      const results =SAMPLE_DATA.filter((item)=> item.productName.toLowerCase().includes(text.toLowerCase()));
       setFilteredData(results)
     }
   }
@@ -82,23 +85,28 @@ const Home :React.FC<CoffeeTypesProps> =()=>{
               
               {/*Image Section*/}
 
-              <FlatList numColumns={2} key={2} columnWrapperStyle={{justifyContent:"space-between"}} data={filterData} keyExtractor={(item)=>item.id} renderItem={({item})=>(
-                <View className="flex-row flex-wrap justify-between mt-3 ">
+              <FlatList  numColumns={2} key={2} columnWrapperStyle={{justifyContent:"space-between"}} data={filterData} keyExtractor={(item)=>item.id} renderItem={({item})=>(
+                <View className="flex-row flex-wrap justify-between mt-3 ml-3 ">
 
            
 
-          <View  className="mb-6 w-[48%]" >
+          <View  className="mb-14 w-[48%] " >
                 {/*Image 1*/}
-                <View className=" h-64 w-auto">
+                <View className=" h-60 ">
                   <TouchableOpacity onPress={() => router.push(`/details/${item.id}` as RelativePathString)}>
-                <Image source={item.image} style={{width:160, height:148}} className=" rounded-xl self-center"/>
+                 <Image source={item.image} style={{width:160, height:148}} className=" rounded-xl "/>
 
-                <Text style={{fontFamily:"Sora_600SemiBold", fontSize:16}} className=" leading-normal ml-3">{item.name}</Text>
+                <Text style={{fontFamily:"Sora_600SemiBold", fontSize:12}} className=" leading-normal ml-3">{item.productName}</Text>
                 <Text style={{fontFamily:"Sora_400Regular", fontSize:12}} className="leading-normal ml-3 text-[#A2A2A2]">{item.description}</Text>
                 </TouchableOpacity>
                 <View className=" h-auto w-42 flex flex-row ">
                   <Text style={{fontFamily:"Sora_600SemiBold",fontSize:18}} className="leading-normal text-[#050505] ml-3">${item.price}</Text>
-                <View style={{backgroundColor: "#C67C4E",borderRadius: 8,padding: 6,marginLeft:100}}><Ionicons name="add" size={18} color="white" /></View>                
+                {/**add to cart */}
+                <View style={{backgroundColor: "#C67C4E",borderRadius: 8 ,marginLeft:80,width:30}}>
+                  <TouchableOpacity onPress={()=>addToCart(item)}>
+                    <Ionicons name="add" size={14} color="white" style={{padding:7}}  />
+                  </TouchableOpacity>
+                  </View>                
                 </View>
                 
                 </View>
@@ -111,10 +119,12 @@ const Home :React.FC<CoffeeTypesProps> =()=>{
               />
 
             {/* Footer */}
-            <View className="absolute bottom-0 left-0 right-0 flex-row justify-around bg-[#FFFFFF] border-gray-300 h-32 items-center">
+            <View className="absolute bottom-0 left-0 right-0 flex-row justify-around bg-[#FFFFFF] border-gray-300 h-28 items-center">
           <Ionicons name="home" color="#A2A2A2" size={20} className="-mt-8"/>
           <Ionicons name="heart" color="#A2A2A2" size={20}  className="-mt-8"/>
-          <Ionicons name="bag" color="#A2A2A2" size={20} className="-mt-8"/>
+
+          <Ionicons name="bag" color="#A2A2A2" size={20} className="-mt-8" onPress={()=>router.push('/order')}/>
+         
           <Ionicons name="notifications" color="#A2A2A2" size={20} className="-mt-8"/>
 
         </View>

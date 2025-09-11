@@ -3,7 +3,7 @@ import { CoffeeTypesProps } from "@/interfaces";
 const SAMPLE_DATA : CoffeeTypesProps[]=[
     {
       id: "CaffeMocha",
-      name: "Caffe Mocha",
+      productName: "Caffe Mocha",
       description: "Deep Foam",
       price: 4.53,
       image: require("@/assets/images/coffee2.png"),   
@@ -11,7 +11,7 @@ const SAMPLE_DATA : CoffeeTypesProps[]=[
     },
     {
       id: "FlatWhite",
-      name: "Flat White",
+      productName: "Flat White",
       description: "Espresso",
       price: 3.53,
       image: require("@/assets/images/coffee3.png"), 
@@ -21,7 +21,7 @@ const SAMPLE_DATA : CoffeeTypesProps[]=[
     },
         {
       id: "CaffeMocha1",
-      name: "Caffe Mocha",
+      productName: "Caffe Mocha",
       description: "Deep Foam",
       price: 4.53,
       image: require("@/assets/images/coffee2.png"), 
@@ -30,7 +30,7 @@ const SAMPLE_DATA : CoffeeTypesProps[]=[
     },
          
     { id: "FlatWhite2",
-      name: "Flat White",
+      productName: "Flat White",
       description: "Espresso",
       price: 3.53,
       image: require("@/assets/images/coffee3.png"), 
@@ -40,7 +40,7 @@ const SAMPLE_DATA : CoffeeTypesProps[]=[
     },
         {
       id: "CaffeMocha3",
-      name: "Caffe Mocha",
+      productName: "Caffe Mocha",
       description: "Deep Foam",
       price: 4.53,
       image: require("@/assets/images/coffee2.png"), 
@@ -49,7 +49,7 @@ const SAMPLE_DATA : CoffeeTypesProps[]=[
     },
 
     { id: "FlatWhite4",
-      name: "Flat White",
+      productName: "Flat White",
       description: "Espresso",
       price: 3.53,
       image: require("@/assets/images/coffee3.png"),
@@ -60,7 +60,7 @@ const SAMPLE_DATA : CoffeeTypesProps[]=[
 
      {
       id: "CaffeMocha5",
-      name: "Caffe Mocha",
+      productName: "Caffe Mocha",
       description: "Deep Foam",
       price: 4.53,
       image: require("@/assets/images/coffee2.png"),
@@ -69,7 +69,7 @@ const SAMPLE_DATA : CoffeeTypesProps[]=[
     },
 
     { id: "FlatWhite6",
-      name: "Flat White",
+      productName: "Flat White",
       description: "Espresso",
       price: 3.53,
       image: require("@/assets/images/coffee3.png"),
@@ -80,7 +80,7 @@ const SAMPLE_DATA : CoffeeTypesProps[]=[
 
          {
       id: "CaffeMocha7",
-      name: "Caffe Mocha",
+      productName: "Caffe Mocha",
       description: "Deep Foam",
       price: 4.53,
       image: require("@/assets/images/coffee2.png"), 
@@ -90,7 +90,7 @@ const SAMPLE_DATA : CoffeeTypesProps[]=[
 
 
         { id: "FlatWhite8",
-      name: "Flat White",
+      productName: "Flat White",
       description: "Espresso",
       price: 3.53,
       image: require("@/assets/images/coffee3.png"),
@@ -100,6 +100,8 @@ const SAMPLE_DATA : CoffeeTypesProps[]=[
     },
 
 ]
+
+
 
 export { SAMPLE_DATA };
 

@@ -1,8 +1,35 @@
 import { Ionicons } from "@expo/vector-icons";
+import { useState } from "react";
 import { Image, SafeAreaView, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
 export default function Index() {
+
+//cart State (example:1 item in cart)
+const [cart,setCart]= useState([
+    {
+    id:1,
+    productName:"Coffee Mocha",
+    description:"Deep Foam",
+    quantity:1,
+    price:3.45,
+    image: require("@/assets/images/coffee2.png"),
+    }
+])
+
+//INCREASE quantity
+const increaseQty=(id:number)=>{
+    setCart((prev)=> prev.map((item)=> item.id === id ? {...item,quantity: item.quantity + 1}:item))
+}
+
+//Decrease Quantity
+const decreaseQty=(id:number)=>{
+    setCart((prev)=> prev.map((item)=> item.id === id && item.quantity > 1 ? {...item,quantity:item.quantity - 1}:item).filter((item)=> item.quantity>0));
+}
+//calculate total price
+const totalPrice = cart.reduce((sum,item)=> sum + item.price * item.quantity,0);
+
+
     return(
   <View style={{flex:1,justifyContent: "center",
         alignItems: "center"}} >
@@ -31,23 +58,29 @@ export default function Index() {
 
     <View style={{width:350,height:1,borderColor:"black",marginTop:15,marginBottom:6,marginLeft:5,backgroundColor:"black"}}></View>
     {/** place order section*/}
-    <View className=" mt-4 mb-6 flex-row justify-between">
+    {cart.map((item)=>(
+
+   
+    <View key={item.id} className=" mt-4 mb-6 flex-row justify-between">
         <View className= " mt-1  flex-row gap-5 ">
-            <Image source={require('@/assets/images/coffee2.png')} style={{width:54,height:54,borderRadius:16}}/>
+            <Image source={item.image} style={{width:54,height:54,borderRadius:16}}/>
             <View className="pt-3">
-            <Text style={{fontFamily:"Sora_600SemiBold",fontSize:18}}>Coffee Mocha</Text>
-            <Text style={{fontFamily:"Sora_400Regular",fontSize:12,color:"#A2A2A2"}}>Deep Foam</Text>
+            <Text style={{fontFamily:"Sora_600SemiBold",fontSize:18}}>{item.productName}</Text>
+            <Text style={{fontFamily:"Sora_400Regular",fontSize:12,color:"#A2A2A2"}}>{item.description}</Text>
             </View>
         </View>
 
         <View className=" mt-1 mr-6 pt-4 flex-row">
-          <Ionicons name="add" size={20}/>
-          <Text style={{fontFamily:"Sora_600SemiBold",fontSize:20}}>1</Text>
-          <Ionicons name="remove" size={20}/>
+            <TouchableOpacity onPress={()=>increaseQty(item.id)}>
+            <Ionicons name="add" size={20}/>
+          </TouchableOpacity>
+          <Text style={{fontFamily:"Sora_600SemiBold",fontSize:20}}>{item.quantity}</Text>
+          <TouchableOpacity onPress={()=>decreaseQty(item.id)}>
+             <Ionicons name="remove" size={20}/></TouchableOpacity>
+         
         </View>
 
-    </View>
-
+    </View> ))}
         <View style={{width:350,height:1,borderColor:"black",marginTop:15,marginLeft:5,backgroundColor:"black"}}></View>
         {/**Discount */}
         <View style={{width:350,height:44}} className="border border-[#A2A2A2] rounded-xl flex-row gap-5 mt-8 pt-2">
@@ -62,7 +95,7 @@ export default function Index() {
             <View className="flex-column gap-5">
                 <View className="flex-row gap-48 pt-3 ">
                     <Text style={{fontFamily:"Sora_400Regular",fontSize:16}}>Price</Text>
-                    <Text style={{fontFamily:"Sora_600SemiBold",fontSize:16,marginLeft:100}}>$3.45</Text>
+                    <Text style={{fontFamily:"Sora_600SemiBold",fontSize:16,marginLeft:100}}>${totalPrice.toFixed(2)}</Text>
                 </View>
                 <View className="flex-row gap-32">
                     <Text style={{fontFamily:"Sora_400Regular",fontSize:16}}>Delivery Fee</Text>
@@ -76,7 +109,7 @@ export default function Index() {
             <Ionicons name="wallet" size={20} color="#C67C4E" style={{paddingTop:15}}/>
             <View className="flex-column gap-1 ">
             <Text style={{fontFamily:"Sora_600SemiBold",fontSize:18}}>Cash/wallet</Text>
-            <Text style={{fontFamily:"Sora_600SemiBold",fontSize:18,color:"#C67C4E"}}>$ 5.54</Text>
+            <Text style={{fontFamily:"Sora_600SemiBold",fontSize:18,color:"#C67C4E"}}>${(totalPrice + 1).toFixed(2)}</Text>
             </View>
             <Ionicons name="arrow-down" size={20} color="black" style={{marginLeft:80}}/>
 
