@@ -1,4 +1,6 @@
 import { SAMPLE_DATA } from "@/constants/home";
+import { useCart } from "@/context/CartContext";
+import { CoffeeTypesProps } from "@/interfaces";
 import { Sora_400Regular, Sora_600SemiBold, Sora_700Bold } from "@expo-google-fonts/sora";
 import { Ionicons } from "@expo/vector-icons";
 import { useFonts } from "expo-font";
@@ -10,6 +12,8 @@ import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 //Read more and Read Less text
 const ReadMoreText = ({text}:{text:any})=>{
+
+
 
 const [expand,setExpand]=useState(false); //used to toggle the read more 
 
@@ -34,8 +38,8 @@ return(
 
 } //reusable component which takes a mandatory "text
 
-export default function CoffeeDetails(){
-
+const CoffeeDetails :React.FC<CoffeeTypesProps> =()=>{
+    const {addToCart} = useCart()
    
     const routes=useRouter()
 
@@ -123,8 +127,8 @@ export default function CoffeeDetails(){
                <Text style={{fontFamily:"Sora_600SemiBold", fontSize: 20,  }} className="text-[#C67C4E]">${coffee.price}</Text>
             </View>
 
-               <TouchableOpacity onPress={()=>{routes.push('/order')}}>
-                <Text  className="bg-[#C67C4E] text-white  border-[#A2A2A2] rounded-2xl -mt-6 ml-14 pt-4 pl-20" style={{fontFamily:"Sora_700Bold",fontSize:18,width:217,height:56}}>Buy Now</Text>
+               <TouchableOpacity onPress={()=>{addToCart(coffee); routes.push('/order')}}>
+                <Text className="bg-[#C67C4E] text-white  border-[#A2A2A2] rounded-2xl -mt-6 ml-14 pt-4 pl-20" style={{fontFamily:"Sora_700Bold",fontSize:18,width:217,height:56}}>Buy Now</Text>
                </TouchableOpacity>
 
             </View>
@@ -141,3 +145,4 @@ export default function CoffeeDetails(){
         </View>
     )
 }
+export default CoffeeDetails;
