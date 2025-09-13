@@ -120,7 +120,7 @@ const Home :React.FC<CoffeeTypesProps> =()=>{
 
             {/* Footer */}
             <View className="absolute bottom-0 left-0 right-0 flex-row justify-around bg-[#FFFFFF] border-gray-300 h-28 items-center">
-          <Ionicons name="home" color="#A2A2A2" size={20} className="-mt-8"/>
+          <Ionicons name="home" color="#A2A2A2" size={20} className="-mt-8" onPress={()=>router.push('/home')}/>
           <Ionicons name="heart" color="#A2A2A2" size={20}  className="-mt-8"/>
 
           <Ionicons name="bag" color="#A2A2A2" size={20} className="-mt-8" onPress={()=>router.push('/order')}/>
